@@ -1,0 +1,28 @@
+repos:
+  # Pre-Commit Hooks Repository
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v2.3.0
+    hooks:
+      # Überprüft die Syntax von YAML-Dateien
+      - id: check-yaml
+      # Stellt sicher, dass Dateien mit einer leeren Zeile enden
+      - id: end-of-file-fixer
+      # Entfernt überflüssige Leerzeichen am Ende der Zeilen
+      - id: trailing-whitespace
+
+  # Black Code Formatter Repository
+  - repo: https://github.com/psf/black
+    rev: 22.10.0
+    hooks:
+      # Formatierung des Python-Codes
+      - id: black
+
+  # Lokale Hooks
+  - repo: local
+    hooks:
+      # Überprüft die Größe der geänderten Dateien
+      - id: check-file-size
+        name: Check file size
+        entry: python scripts/check_file_size.py
+        language: python
+        pass_filenames: true
